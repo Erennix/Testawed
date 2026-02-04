@@ -1,12 +1,16 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { api, type ResponseInput } from "@shared/routes";
 
+const apiBaseUrl = (import.meta.env.VITE_API_BASE_URL || "").replace(/\/$/, "");
+
 // GET /api/config
 export function useConfig() {
   return useQuery({
     queryKey: [api.config.get.path],
     queryFn: async () => {
-      const res = await fetch(api.config.get.path, { credentials: "include" });
+      const res = await fetch(`${apiBaseUrl}${api.config.get.path}`, {
+        credentials: "include",
+      });
       if (!res.ok) throw new Error("Failed to fetch config");
       return api.config.get.responses[200].parse(await res.json());
     },
@@ -18,7 +22,7 @@ export function useCreateResponse() {
   return useMutation({
     mutationFn: async (data: ResponseInput) => {
       const validated = api.responses.create.input.parse(data);
-      const res = await fetch(api.responses.create.path, {
+      const res = await fetch(`${apiBaseUrl}${api.responses.create.path}`, {
         method: api.responses.create.method,
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(validated),

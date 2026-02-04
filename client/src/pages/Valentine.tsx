@@ -120,7 +120,7 @@ export default function Valentine() {
               I knew you'd say yes, {name}! ❤️
             </p>
             <div className="mt-8 text-sm text-muted-foreground">
-              (Check Discord for the notification!)
+              (I love you!!!)
             </div>
           </motion.div>
         ) : (
