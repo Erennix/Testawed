@@ -169,7 +169,9 @@ export default function Valentine() {
                 animate={{ 
                   x: noPosition.x, 
                   y: noPosition.y,
-                  opacity: Math.max(0, 1 - (noCount * 0.1)) // Slowly fade out
+                  opacity: Math.max(0, 1 - (noCount * 0.1)), // Slowly fade out
+                  scale: Math.max(0, 1 - (noCount * 0.1)),
+                  display: noCount >= 10 ? "none" : "block"
                 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 className="bg-rose-100 hover:bg-rose-200 text-rose-800 font-bold py-4 px-8 rounded-full text-xl shadow-md min-w-[150px] absolute md:static"
