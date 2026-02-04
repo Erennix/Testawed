@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { insertResponseSchema, responses } from './schema';
+import { insertResponseSchema, responses } from './schema.ts';
 
 export const errorSchemas = {
   validation: z.object({
