@@ -1,5 +1,5 @@
-import { db } from "./db";
-import { responses, type InsertResponse, type Response } from "@shared/schema";
+import { db } from "./db.ts";
+import { responses, type InsertResponse, type Response } from "../shared/schema.ts";
 
 export interface IStorage {
   createResponse(response: InsertResponse): Promise<Response>;
