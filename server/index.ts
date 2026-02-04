@@ -37,6 +37,13 @@ export function log(message: string, source = "express") {
   console.log(`${formattedTime} [${source}] ${message}`);
 }
 
+log(
+  process.env.DATABASE_URL
+    ? "Database configured. Using PostgreSQL storage."
+    : "DATABASE_URL not set. Using in-memory storage.",
+  "startup",
+);
+
 app.use((req, res, next) => {
   const start = Date.now();
   const path = req.path;

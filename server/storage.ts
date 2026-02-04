@@ -7,6 +7,10 @@ export interface IStorage {
 
 export class DatabaseStorage implements IStorage {
   async createResponse(insertResponse: InsertResponse): Promise<Response> {
+    if (!db) {
+      throw new Error("Database is not configured.");
+    }
+
     const [response] = await db
       .insert(responses)
       .values(insertResponse)
@@ -15,4 +19,18 @@ export class DatabaseStorage implements IStorage {
   }
 }
 
-export const storage = new DatabaseStorage();
+class MemoryStorage implements IStorage {
+  private responses: Response[] = [];
+  private nextId = 1;
+
+  async createResponse(insertResponse: InsertResponse): Promise<Response> {
+    const response = {
+      id: this.nextId++,
+      ...insertResponse,
+    } as Response;
+    this.responses.push(response);
+    return response;
+  }
+}
+
+export const storage = db ? new DatabaseStorage() : new MemoryStorage();
