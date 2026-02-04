@@ -1,6 +1,6 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
-import { storage } from "./storage.js";
+import { storage } from "./storage.ts";
 import { api } from "@shared/routes";
 import { z } from "zod";
 import fs from "fs";
