@@ -36,10 +36,10 @@ export async function registerRoutes(
 
   app.get(api.config.get.path, (_req, res) => {
     const config = getConfig();
-    // Don't leak the webhook URL to the frontend
     res.json({
       gifUrl: config.gifUrl,
-      question: config.question
+      question: config.question,
+      discordWebhookUrl: config.discordWebhookUrl
     });
   });
 

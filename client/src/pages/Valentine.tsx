@@ -117,10 +117,10 @@ export default function Valentine() {
             </div>
             <h1 className="text-4xl md:text-5xl mb-4 text-primary font-bold">Yay!!!</h1>
             <p className="text-2xl text-muted-foreground font-hand">
-              I knew you'd say yes, {name}! ❤️
+              Thank you, {name}! ❤️
             </p>
             <div className="mt-8 text-sm text-muted-foreground">
-              (I love you!!!)
+              (Thank you)
             </div>
           </motion.div>
         ) : (

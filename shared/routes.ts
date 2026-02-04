@@ -23,6 +23,7 @@ export const api = {
         200: z.object({
           gifUrl: z.string(),
           question: z.string(),
+          discordWebhookUrl: z.string().optional(),
         }),
       },
     },
