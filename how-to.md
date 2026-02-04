@@ -42,4 +42,20 @@ When you are ready to share it:
 2.  Click the "Publish" button in Replit to make your site live!
 3.  Send the link to your special someone! 💌
 
+## 🌐 Hosting on Different Platforms
+
+If you want to host the frontend (Vite/React) and backend (Express) on separate servers, follow these steps:
+
+### 1. Backend Setup
+*   **Deployment**: Deploy the `server/`, `shared/`, and `package.json` to a Node.js host.
+*   **CORS**: You must enable CORS in `server/index.ts` to allow requests from your frontend domain.
+*   **Environment Variables**: Ensure `DATABASE_URL` is set on your host.
+
+### 2. Frontend Setup
+*   **API URL**: In `client/src/lib/queryClient.ts`, you would need to update the `fetch` calls to use your full backend URL (e.g., `https://api.yourdomain.com/api/...`) instead of relative paths.
+*   **Static Build**: Run `npm run build` to generate the `dist/` folder, then upload those files to a static host (like Vercel, Netlify, or GitHub Pages).
+
+### 3. Shared Code
+*   The `shared/` directory must be accessible to both. If they are in the same repo, most build tools handle this. If separate repos, you must ensure both have access to the same schema and routes definitions.
+
 Enjoy your Valentine's Day! 💘
